@@ -1,17 +1,16 @@
-    # Usa la imagen base oficial de Ruby
-FROM ruby:3.1-slim
+# Use the official Ruby image
+FROM ruby:3.2
 
-# Establece el directorio de trabajo dentro del contenedor
+# Install application dependencies
 WORKDIR /app
+COPY Gemfile* ./
+RUN bundle install
 
-# Copia los archivos del proyecto dentro del contenedor
-COPY . /app
+# Copy the application code
+COPY . .
 
-# Instala las dependencias de la aplicación usando Bundler
-RUN gem install bundler && bundle install
-
-# Expone el puerto 4567 (puerto por defecto de Sinatra)
+# Expose port 4567 (default for Sinatra)
 EXPOSE 4567
 
-# Define el comando para ejecutar la aplicación Sinatra
+# Command to run the application
 CMD ["ruby", "app.rb"]

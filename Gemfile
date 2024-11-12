@@ -1,3 +1,7 @@
 source 'https://rubygems.org'
+source 'https://rubygems.org'
 
-gem 'sinatra', '2.1.0'
+gem 'sinatra'
+gem 'rackup'
+gem 'webrick'
+gem 'bundler'
